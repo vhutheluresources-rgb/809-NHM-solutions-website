@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Client Reviews</title>
+  <link rel="stylesheet" href="all-reviews.css" />
+
+</head>
+
+<body>
+  <div class="reviews-page">
+    <div class="reviews-header">
+      <h1>All Client Reviews</h1>
+      <p>Browse through all feedback from our valued clients.</p>
+    </div>
+
+    <div id="spinner" class="spinner" style="display:none;"></div>
+    <!-- Reviews Grid -->
+    <div class="reviews-grid" id="reviewsGrid">
+      <!-- Reviews will be injected here by Firebase -->
+    </div>
+
+    <!-- Back link -->
+    <a href="index.html#reviews" class="back-link">← Back to Reviews Section</a>
+  </div>
+
+  <!-- Firebase + JS -->
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import {
+      getFirestore,
+      collection,
+      addDoc,
+      getDocs,
+      serverTimestamp,
+      query,
+      orderBy,
+      limit,
+      startAfter
+    } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAt4hsWhAhJnueKb3E4KLm5xHz_rd0fc2s",
+      authDomain: "reviews-809-app.firebaseapp.com",
+      projectId: "reviews-809-app",
+      storageBucket: "reviews-809-app.firebasestorage.app",
+      messagingSenderId: "1010236785855",
+      appId: "1:1010236785855:web:ce59be634204323a9a720a"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const reviewsGrid = document.getElementById("reviewsGrid");
+    const spinner = document.getElementById("spinner");
+
+    let lastVisible = null;
+    const pageSize = 6;
+    let loading = false;
+    let noMoreReviews = false;
+
+    async function loadReviews(initial = false) {
+      if (loading || noMoreReviews) return;
+      loading = true;
+
+      spinner.style.display = "block";
+
+      let q;
+      if (initial || !lastVisible) {
+        q = query(collection(db, "reviews"), orderBy("timestamp", "desc"), limit(pageSize));
+      } else {
+        q = query(collection(db, "reviews"), orderBy("timestamp", "desc"), startAfter(lastVisible), limit(pageSize));
+      }
+
+      const querySnapshot = await getDocs(q);
+
+      if (querySnapshot.empty) {
+        noMoreReviews = true;
+        spinner.style.display = "none";
+        return;
+      }
+
+      querySnapshot.forEach((doc) => {
+        const review = doc.data();
+        const card = document.createElement("div");
+        card.className = "review-card";
+
+        // Safely handle timestamp
+        let dateString = "";
+        if (review.timestamp && review.timestamp.toDate) {
+          dateString = new Date(review.timestamp.toDate()).toLocaleDateString();
+        }
+
+        card.innerHTML = `
+        <h4>${review.name} <span>${"★".repeat(review.rating)}${"☆".repeat(5 - review.rating)}</span></h4>
+        <p class="date">${dateString}</p>
+        <p>${review.text}</p>
+      `;
+        reviewsGrid.appendChild(card);
+      });
+
+      lastVisible = querySnapshot.docs[querySnapshot.docs.length - 1];
+
+      spinner.style.display = "none";
+      loading = false;
+    }
+
+    // Initial load
+    loadReviews(true);
+
+    // Infinite scroll
+    window.addEventListener("scroll", () => {
+      if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 200) {
+        loadReviews();
+      }
+    });
+  </script>
+
+
+
+</body>
+
+</html>

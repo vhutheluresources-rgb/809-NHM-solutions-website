@@ -1,0 +1,104 @@
+.services-container{
+    width: 100%;
+    margin: 0 auto;   
+}
+
+.services-header {
+  text-align: center;
+  padding: 40px 0 30px;
+  width: 100%;
+  /* allow full width */
+  margin: 0 auto;
+  background: url('images/serivces-img.jpg') center/cover no-repeat;
+  position: relative;
+  color: #fff;
+  /* ensures text is visible on darker backgrounds */
+}
+
+/* Optional overlay for readability */
+.services-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  /* semi-transparent dark overlay */
+  z-index: 0;
+}
+
+.services-header h1,
+.services-header p {
+  position: relative;
+  z-index: 1;
+  /* keep text above overlay */
+  padding: o 20px;
+}
+
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 30px;
+  padding: 30px 80px 30px;
+}
+
+.service-card {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  /* ensures rounded corners apply to image too */
+  box-shadow: var(--shadow);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.service-image img {
+  width: 100%;
+  height: 200px;
+  /* adjust as needed */
+  object-fit: cover;
+  /* keeps image nicely cropped */
+  display: block;
+}
+
+.service-content {
+  padding: 20px;
+  text-align: left;
+}
+
+.service-content h3 {
+  margin-top: 0;
+  font-size: 1.4rem;
+  color: #333;
+}
+
+.service-content p {
+  font-size: 0.95rem;
+  color: #555;
+  margin: 10px 0;
+}
+
+.service-content ul {
+  padding-left: 20px;
+  margin: 0;
+}
+
+.service-content li {
+  margin-bottom: 6px;
+  color: #444;
+}
+
+
+
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .services-header h1 {
+    font-size: 36px;
+  }
+}

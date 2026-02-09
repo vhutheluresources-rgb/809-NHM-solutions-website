@@ -1,0 +1,169 @@
+.about-container {
+    width: 100%;
+    margin: 0 auto;   
+}
+
+/* About Section */
+.about-us-header {
+  display: flex;
+  padding: 20px 20px;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/*About Content*/
+.about-content {
+  max-width: 700px;
+  margin: 20px 0;
+  padding: 0;
+}
+
+
+.about-header {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+  margin-top: 20px;
+  letter-spacing: 1px;
+}
+
+.about-body {
+  position: relative;
+  display: inline-block;
+}
+
+.about-image {
+  width: 80%;
+  max-width: 800px;
+  border-radius: 8px;
+  display: block;
+}
+
+.about-text {
+  position: absolute;
+  top: 20%;          /* adjust vertical placement */
+  right: -30%;       /* pushes it outside the image */
+  width: 60%;        /* small portion of the image */
+  background: #fff;  /* solid background like paper */
+  padding: 20px;
+  border-radius: 6px;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  transform: rotate(-2deg); /* slight tilt for "taped" look */
+}
+
+/* Mission Section */
+.mission-content {
+  display: flex;
+  max-width: 1200px;
+  flex-wrap: wrap-reverse;
+  align-items: center;
+  gap: 40px;
+}
+
+.mission-text {
+  flex: 1;
+  background: #fff;
+  padding: 30px;
+   border-radius: 6px;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  transform: rotate(2deg); /* slight tilt for "taped" look */
+}
+
+.mission-text-content {
+  transform: rotate(-2deg); /* counter tilt so text is straight */
+}
+
+
+.mission-text h3 {
+  font-size: 1.8rem;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+}
+
+.mission-text p {
+  font-size: 1.05rem;
+  color: #555;
+}
+
+.mission-image img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Values Section */
+.values-content {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.values-content h3 {
+  font-size: 1.8rem;
+  color:var(--primary-color);
+  margin-bottom: 40px;
+}
+
+.values {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.value {
+  background-color: #d1d1d1;
+  padding: 30px;
+  width: 280px;
+  box-shadow: 2px 4px 12px rgba(0,0,0,0.5);
+  transition: transform 0.3s ease;
+}
+
+.value:hover {
+  transform: translateY(-5px);
+}
+
+.value i {
+  font-size: 2rem;
+  color: var(--bright-color);
+  margin-bottom: 15px;
+}
+
+.value h4 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.value p {
+  font-size: 1rem;
+  color: #666;
+}
+
+@media (max-width:480px){
+  .about-us-header{
+    padding: 0 20px 20px;
+  }
+
+  .about-header{
+    margin-top: 0;
+  }
+
+  .about-body{
+
+  }
+
+  .about-text {
+    position: static;
+    transform: none;
+    margin-top: 20px;
+  }
+}

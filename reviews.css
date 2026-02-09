@@ -1,0 +1,201 @@
+/* General Section Styling */
+#reviews {
+  padding: 60px 20px;
+  background: #f9f9f9;
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #333;
+}
+
+.reviews-container {
+  padding: 30px 0px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Header */
+.reviews-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.reviews-header h1 {
+  font-size: 2.5rem;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.reviews-header p {
+  font-size: 1.1rem;
+  color: #666;
+}
+
+/* Reviews Body Layout */
+.reviews-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+/* Recent Reviews */
+.recent-reviews h3 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  color: var(--text-color);
+}
+
+.review-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.review-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+}
+
+.review-card h4 {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+  color: #222;
+}
+
+.review-card h4 span {
+  color: #f4b400; /* Gold stars */
+  font-size: 1rem;
+  margin-left: 8px;
+}
+
+.review-card .date {
+  font-size: 0.9rem;
+  color: #888;
+  margin-bottom: 10px;
+}
+
+/* View More link */
+.view-more {
+  margin-top: 10px;
+}
+
+.view-more a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  transition: color 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.view-more a:hover {
+  
+  transform: translateY(-4px);
+  color: #980f21;
+}
+
+/* Review Form */
+.review-form {
+  width: 100%;
+}
+
+.review-form h3 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  color: var(--text-color);
+}
+
+.reviewForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.reviewForm input,
+.reviewForm textarea {
+  width: 100%;
+  max-width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+/* Make textarea clearly multi-line */
+.reviewForm textarea {
+  min-height: 120px;
+  resize: vertical; /* allow user to expand */
+}
+
+.reviewForm input:focus,
+.reviewForm textarea:focus {
+  border-color: #0078d7; /* Microsoft blue */
+  outline: none;
+}
+
+.submit-review-button {
+  background: linear-gradient(60deg, #9e0184, #f5002d);
+  color: white;
+  border: none;
+  padding: 15px 40px;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  /* Animate shadow too */
+}
+
+/* Hover effect */
+.submit-review-button:hover {
+  background: linear-gradient(60deg, #f932cb, #f73838);
+  transform: scale(1.1);
+  /* Grow slightly */
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+  /* Add shadow depth */
+}
+
+/* Star Rating */
+.star-rating {
+  font-size: 2rem;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.star-rating span:hover,
+.star-rating span:hover ~ span {
+  color: #f4b400;
+}
+
+.spinner {
+    border: 6px solid #f3f3f3;
+    /* Light grey */
+    border-top: 6px solid #800713;
+    /* Blue */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .reviews-body {
+    grid-template-columns: 1fr;
+  }
+}
