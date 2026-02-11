@@ -5,7 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (navbarToggle && navbarMenu) {
     // Toggle menu when hamburger is clicked
-    navbarToggle.addEventListener('click', () => {
+    navbarToggle.addEventListener('click', (e) => {
+      e.stopPropagation(); // prevent closing immediately when clicking toggle
       navbarToggle.classList.toggle('active');
       navbarMenu.classList.toggle('active');
     });
@@ -16,6 +17,18 @@ document.addEventListener("DOMContentLoaded", () => {
         navbarToggle.classList.remove('active');
         navbarMenu.classList.remove('active');
       });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (
+        navbarMenu.classList.contains('active') &&
+        !navbarMenu.contains(e.target) &&
+        !navbarToggle.contains(e.target)
+      ) {
+        navbarToggle.classList.remove('active');
+        navbarMenu.classList.remove('active');
+      }
     });
   }
 });
