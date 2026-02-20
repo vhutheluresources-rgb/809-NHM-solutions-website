@@ -30,30 +30,31 @@
 }
 
 .about-body {
-  position: relative;
   display: inline-block;
 }
 
 .about-image {
-  width: 80%;
+  width: 100%;
   max-width: 800px;
   border-radius: 8px;
   display: block;
 }
 
-.about-text {
+.about-text-content {
   position: absolute;
   top: 20%;          /* adjust vertical placement */
   right: -30%;       /* pushes it outside the image */
-  width: 60%;        /* small portion of the image */
+  width: 100%;        /* small portion of the image */
   background: #fff;  /* solid background like paper */
   padding: 20px;
   border-radius: 6px;
-  font-size: 1rem;
   line-height: 1.6;
-  color: #333;
   box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-  transform: rotate(-2deg); /* slight tilt for "taped" look */
+}
+
+.about-text{
+font-size: 1rem;
+color: #333;
 }
 
 /* Mission Section */
@@ -161,7 +162,7 @@
 
   }
 
-  .about-text {
+  .about-text-content {
     position: static;
     transform: none;
     margin-top: 20px;
