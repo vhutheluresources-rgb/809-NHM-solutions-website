@@ -30,11 +30,12 @@
 }
 
 .about-body {
+  position: relative;
   display: inline-block;
 }
 
 .about-image {
-  width: 100%;
+  width: 80%;
   max-width: 800px;
   border-radius: 8px;
   display: block;
@@ -44,7 +45,7 @@
   position: absolute;
   top: 20%;          /* adjust vertical placement */
   right: -30%;       /* pushes it outside the image */
-  width: 100%;        /* small portion of the image */
+  width: 60%;        /* small portion of the image */
   background: #fff;  /* solid background like paper */
   padding: 20px;
   border-radius: 6px;
@@ -158,11 +159,16 @@ color: #333;
     margin-top: 0;
   }
 
-  .about-body{
+  .about-body {
+    display: inline-block;
+  }
 
+  .about-image{
+    width: 100%;
   }
 
   .about-text-content {
+    width: 100%;
     position: static;
     transform: none;
     margin-top: 20px;
